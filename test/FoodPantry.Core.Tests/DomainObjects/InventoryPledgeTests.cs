@@ -27,9 +27,22 @@ public class InventoryPledgeTests
     {
         var pledge = new InventoryPledge(memberId: 1, productId: 2, quantity: 3, DateTimeOffset.Now.AddDays(-7));
         var fulfilledDate = DateTimeOffset.Now;
+        var fulfilledQuantity = 2;
+        pledge.Fulfill(fulfilledQuantity, fulfilledDate);
         
-        pledge.Fulfill(fulfilledDate);
+        Assert.Equal(fulfilledQuantity, pledge.Quantity);
+        Assert.Equal(fulfilledDate, pledge.FulfilledOn);
+    }
+
+    [Fact]
+    public void Can_scaffold_inventory_donation_from_pledge()
+    {
+        var pledge = new InventoryPledge(memberId: 1, productId: 2, quantity: 3, DateTimeOffset.Now.AddDays(-7));
         
-        Assert.Null(pledge.FulfilledOn);
+        var donation = pledge.Fulfill(3, fulfilledDate: DateTimeOffset.Now);
+        
+        Assert.Equal(pledge.MemberId, donation.MemberId);
+        Assert.Equal(pledge.ProductId, donation.ProductId);
+        Assert.Equal(pledge.FulfilledOn, donation.DonatedOn);
     }
 }

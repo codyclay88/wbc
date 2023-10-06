@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="EFCore.NamingConventions" Version="7.0.2" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.0-rc.1.23419.6" />
+      <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="8.0.0-rc.1" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\FoodPantry.Core\FoodPantry.Core.csproj" />
+    </ItemGroup>
+
+</Project>

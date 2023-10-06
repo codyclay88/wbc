@@ -14,12 +14,14 @@ public class InventoryPledge
     public int Id { get; init; }
     public int MemberId { get; }
     public int ProductId { get; }
-    public int Quantity { get; }
+    public int Quantity { get; private set; }
     public DateTimeOffset PledgedOn { get; }
     public DateTimeOffset? FulfilledOn { get; private set; }
 
-    public void Fulfill(DateTimeOffset fulfilledDate)
+    public InventoryDonation Fulfill(int quantity, DateTimeOffset fulfilledDate)
     {
         FulfilledOn = fulfilledDate;
+        Quantity = quantity;
+        return new InventoryDonation(MemberId, ProductId, quantity, fulfilledDate);
     }
 }

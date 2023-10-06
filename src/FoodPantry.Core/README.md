@@ -5,11 +5,10 @@
 The following items represent the core domain objects for the food pantry application. The Domain Objects 
 are the objects that are persisted to the database, and are the foundation for implementing the business logic. 
 Because they are persisted to the database, each domain object has an implicit `Id` field that is strictly used by 
-`EF Core` for maintaining database integrity and establishing relationships to other objects. 
+**EF Core** for maintaining database integrity and establishing relationships to other objects. 
 
 Each Domain Object should be simple and focused on a single responsibility. I am going to attempt to keep business logic 
 out of the Domain Objects and instead implement business logic through "pure functions" that operate on the Domain Objects.
-For displaying data to the user, "Computed Values" (discussed in the next section) are derived from the Domain Objects. 
 
 
 ### `Product`
@@ -53,11 +52,21 @@ When a member fulfills an `InventoryPledge`, a `InventoryDonation` is created. E
 - `Quantity`: The quantity of the `Product` that was donated.
 - `DonatedOn`: The date/time that the donation was made.
 
+`InventoryDonations` can also be created without a corresponding `InventoryPledge`. This is useful for tracking donations that were made outside of a pledge.
+
+### ``
 
 ## Computed Values
 
 The following items represent computed values that are derived from the core domain objects. Computed values 
 should not be saved directly to the database, but rather should be computed on the fly as needed. 
 
-### `InventoryStatusOnDate`
+### `ProductStockOnDate`
+This is a computed value that allows us to determine the quantity of a product at a moment in time. 
+In order to compute this value, we need to know the following:
+- `ProductId`: The `Product` that we are interested in.
+- `Date`: The date that we are interested in.
+This should spit out the following information:
+- `Quantity`: The quantity of the `Product` that we have on hand at the given date.
 
+This value will use the `InventoryDonation` records that were collected before the `Date`
