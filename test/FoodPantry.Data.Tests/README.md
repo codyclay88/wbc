@@ -19,3 +19,14 @@ from the container, and then creates the database.
 This `DatabaseFixture` can be used as a `ClassFixture` or a `CollectionFixture`
 in my test classes. 
 
+## What do I really need to test here?
+This is a good question.. I don't need to test EfCore, I am banking on Microsoft to test 
+that for me. 
+
+I do need to test that my `FoodPantryDbContext` is configured correctly, and that my `DbSet` 
+properties are configured correctly. This, I think, will allow me to do a TDD approach 
+as I add more functionality to the data access layer, which is mostly in the form of adding new 
+`DbSet` properties to the `FoodPantryDbContext` class.
+
+
+

@@ -1,6 +1,8 @@
-﻿using Testcontainers.PostgreSql;
+﻿using FoodPantry.Data;
+using Testcontainers.PostgreSql;
+using Xunit;
 
-namespace FoodPantry.Data.Tests;
+namespace FoodPantry.Tests.Shared;
 
 public class DatabaseFixture : IAsyncLifetime
 {

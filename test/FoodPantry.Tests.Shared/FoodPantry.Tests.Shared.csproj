@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Testcontainers.PostgreSql" Version="3.5.0" />
+      <PackageReference Include="xunit" Version="2.4.2" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\src\FoodPantry.Core\FoodPantry.Core.csproj" />
+      <ProjectReference Include="..\..\src\FoodPantry.Data\FoodPantry.Data.csproj" />
+    </ItemGroup>
+
+</Project>
